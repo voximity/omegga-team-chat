@@ -1,0 +1,46 @@
+{
+    "name": "Team Chat",
+    "description": "Adds a command that allows private communication between minigame team members",
+    "author": "x",
+    "config": {
+        "command": {
+            "description": "The command to use for team chat, not including the slash.",
+            "type": "string",
+            "default": "t"
+        },
+        "prefix": {
+            "description": "The prefix placed before team chats, not including the space. Set empty to disable (why would you do this?).",
+            "type": "string",
+            "default": "<b>[TEAM]</>"
+        },
+        "log": {
+            "description": "Whether or not to log team chats to the server log.",
+            "type": "boolean",
+            "default": true
+        },
+        "enable-whitelist": {
+            "description": "Whether or not the team-list property is a whitelist or a blacklist of team names.",
+            "type": "boolean",
+            "default": false
+        },
+        "team-list": {
+            "description": "A list of teams (comma separated) that are whitelisted OR blacklisted from using team chat. This is determined by enable-whitelist. When enable-whitelist is off, then this acts as a blacklist, banning teams from using team chat.",
+            "type": "string",
+            "default": ""
+        }
+    },
+    "commands": [
+        {
+            "name": "/t",
+            "description": "Send a message to your team's chat.",
+            "example": "/t hello team!",
+            "args": [
+                {
+                    "name": "content",
+                    "description": "The content of the message to send",
+                    "required": true
+                }
+            ]
+        }
+    ]
+}
