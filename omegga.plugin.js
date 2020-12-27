@@ -1,3 +1,5 @@
+const lerp = (a, b, c) => a + (b - a) * c;
+
 class TeamChat {
     constructor(omegga, config, store) {
         this.omegga = omegga;
@@ -26,7 +28,8 @@ class TeamChat {
             }
 
             const content = OMEGGA_UTIL.chat.parseLinks(OMEGGA_UTIL.chat.sanitize(contents.join(" ")));
-            const color = OMEGGA_UTIL.color.rgbToHex(belongingTeam.color || {r: 255, g: 255, b: 255, a: 255});
+            const teamColor = belongingTeam.color || [255, 255, 255, 255];
+            const color = OMEGGA_UTIL.color.rgbToHex(teamColor.map((c) => Math.round(lerp(50, 255, c / 255))));
 
             belongingTeam.members.forEach((m) => {
                 this.omegga.whisper(m.name, `<color="${color}">${this.config.prefix != "" ? `${this.config.prefix} ` : ""}<b>${name}:</></> ${content}`);
