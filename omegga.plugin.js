@@ -33,8 +33,8 @@ class TeamChat {
 
             belongingTeam.members.forEach((m) => {
                 this.omegga.whisper(m.name, `<color="${color}">${this.config.prefix != "" ? `${this.config.prefix} ` : ""}<b>${name}:</></> ${content}`);
-                if (this.config.log) console.log(`${name} TO TEAM: ${content}`);
             });
+            if (this.config.log) console.log(`${name} TO TEAM: ${content}`);
         });
 
         return {"registeredCommands": [this.config.command]};
